@@ -1,10 +1,28 @@
+/*
+* Displaying Account information
+
+* Description:
+* This program is a simple Bank management system designed to Displaying Account information.
+
+
+* File: display.c
+* - It includes necessary function to Displaying Account information.
+*
+* Usage:
+* - Compile the program using a C compiler (e.g., gcc).
+* - Follow the on-screen prompts to Display the account information.
+*
+* Note: This program is for educational purposes and may require additional enhancements
+* for real-world use cases such as error handling, data validation, and persistence.
+*/
+
 // "main.h" contains the structure for a bank account and declarations for displayAccount, deposit, and withdraw
 #include "main.h"
 
 // Function to display account information
 void displayAccount() {
     int accountNumber,password;
-    // Get account information from the user
+    // Getting account information from the user
     printf("Enter your account number: ");
     scanf("%d", &accountNumber);
     printf("Enter your password number: ");

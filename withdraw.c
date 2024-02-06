@@ -1,3 +1,22 @@
+/*
+* Withdrawing the amount from account
+
+* Description:
+* This program is a simple Bank management system designed to Withdrawing the amount from account.
+
+
+* File: Withdraw.c
+* - It includes necessary function to Withdrawing the amount from account.
+*
+* Usage:
+* - Compile the program using a C compiler (e.g., gcc).
+* - Follow the on-screen prompts to withdraw.
+*
+* Note: This program is for educational purposes and may require additional enhancements
+* for real-world use cases such as error handling, data validation, and persistence.
+*/
+
+
 // "main.h" contains the structure for a bank account and declarations for displayAccount, deposit, and withdraw
 #include "main.h"
 

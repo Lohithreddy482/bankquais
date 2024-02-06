@@ -1,18 +1,35 @@
-// "main.h" contains the structure for a bank account and declarations for displayAccount, deposit, and withdraw
+/*
+* DEPOSITING THE AMOUNT INTO ACCOUNT
 
+* Description:
+* This program is a simple Bank management system designed to Deposit the Account into Account.
+
+* File: deposit.c
+* - It includes necessary function to deposit the amount into account.
+*
+* Usage:
+* - Compile the program using a C compiler (e.g., gcc).
+* - Follow the on-screen prompts to Deposit.
+*
+* Note: This program is for educational purposes and may require additional enhancements
+* for real-world use cases such as error handling, data validation, and persistence.
+*/
+
+// "main.h" contains the structure for a bank account and declarations for displayAccount, deposit, and withdraw
 #include "main.h"
+
 // Function to perform a deposit to the account
 void deposit() {
     int accountNumber,password;
     float amount;
 
-    // Get account information from the user
+    // GetTing the account information from the user
     printf("Enter your account number: ");
     scanf("%d", &accountNumber);
     printf("Enter your password number: ");
     scanf("%d", &password);
 
-    // Declare a structure to hold loaded account information
+    // Declaring a structure to hold loaded account information
     struct BankAccount loadedAccount;
     // Open the file for reading and updating
     FILE *file = fopen("C:/Users/chandrasekar/Downloads/bankquick/balance.txt", "r+");
