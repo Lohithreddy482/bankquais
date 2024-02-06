@@ -1,7 +1,7 @@
 /*
 *    Bank management system
 
-*    This C program provides a simple implementation for managing account information.
+*    This C program provides a implementation for managing account information.
 *    It utilizes structures to Modify Account information and includes functions for depositing and withdrawing the amount.
 
 *	Defining the standard C header files
