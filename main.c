@@ -2,7 +2,7 @@
 * Bank Management System
 
 * Description:
-* This program is a simple Bank management system designed to manage Account information.
+* This program is a Bank management system designed to manage Account information.
 * It allows user to display the Account information, deposit,and to perform withdraw tasks.
 
 * File: main.c
@@ -14,40 +14,65 @@
 * - Follow the on-screen prompts to Deposit, withdraw, Display the account information and exit the program.
 *
 * Note: This program is for educational purposes and may require additional enhancements
-* for real-world use cases such as error handling, data validation, and persistence.
+* for real-world use cases such as error handling and persistence.
 */
 
 // "main.h" contains the structure for a bank account and declarations for displayAccount, deposit, and withdraw
 
 #include "main.h"
-int main(){
+int main() {
     int choice;
 
-    do {
-         // Display menu
+        do{
+        // Display menu
         printf("1. Display Account Information\n");
-        printf("2. Exit\n");
+        printf("2. Withdraw\n");
         printf("3. Deposit\n");
-        printf("4. Withdraw\n");
-        printf("Enter your choice: ");
-        scanf("%d", &choice);
+        printf("4. Exit\n");
+        while (1) {
+                printf("Enter the choice: ");
+
+                // Try to read an integer as the withdrawal amount
+                if (scanf("%d", &choice) == 1) {
+                    // Check if the amount is a valid integer
+                    char c;
+                    if (scanf("%c", &c) == 1 && c == '\n') {
+                        // Check if the character following the integer is a newline
+                        break;  // Exit the loop if a valid integer amount is entered
+                    } else {
+                        // Input is not a valid integer
+                        printf("Invalid input. Enter a valid integer amount.\n");
+
+                        // Clear the input buffer
+                        while (getchar() != '\n');  // Consume characters until newline
+                    }
+                } else {
+                    // Input is not a valid integer
+                    printf("Invalid input. Enter a valid integer amount.\n");
+
+                    // Clear the input buffer
+                    while (getchar() != '\n');  // Consume characters until newline
+                }
+                  }
 
         switch (choice) {
             case 1:
-                displayAccount();   // Call the function to display account information
+                displayAccount();
                 break;
             case 2:
-                printf("Exiting...\n");   // Call the function to exit from the program
+                withdraw();
                 break;
             case 3:
-                deposit();         // Call the function to deposit into the account
+                deposit();
                 break;
             case 4:
-                withdraw();        // Call the function to withdraw from the account
+                printf("Exiting...\n");
                 break;
             default:
                 printf("Invalid choice. Please try again.\n");
+                break;
         }
-    } while (choice != 2);
+    }while(choice!=4);
+
     return 0;
 }

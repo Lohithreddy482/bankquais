@@ -2,7 +2,7 @@
 * Displaying Account information
 
 * Description:
-* This program is a simple Bank management system designed to Displaying Account information.
+* This program is a Bank management system designed to Displaying Account information.
 
 
 * File: display.c
@@ -13,7 +13,7 @@
 * - Follow the on-screen prompts to Display the account information.
 *
 * Note: This program is for educational purposes and may require additional enhancements
-* for real-world use cases such as error handling, data validation, and persistence.
+* for real-world use cases such as error handling and persistence.
 */
 
 // "main.h" contains the structure for a bank account and declarations for displayAccount, deposit, and withdraw
@@ -23,10 +23,55 @@
 void displayAccount() {
     int accountNumber,password;
     // Getting account information from the user
-    printf("Enter your account number: ");
-    scanf("%d", &accountNumber);
-    printf("Enter your password number: ");
-    scanf("%d", &password);
+    while (1) {
+        printf("Enter your account number: ");
+
+        // Try to read an integer as the account number
+        if (scanf("%d", &accountNumber) == 1) {
+            char c;
+            // Check if the character following the integer is a newline
+            if (scanf("%c", &c) == 1 && c == '\n') {
+                break;  // Exit the loop if a valid integer account number is entered
+            } else {
+                // Input is not a valid integer
+                printf("Invalid input. Enter a valid integer account number.\n");
+
+                // Clear the input buffer
+                while (getchar() != '\n');  // Consume characters until newline
+            }
+        } else {
+            // Input is not a valid integer
+            printf("Invalid input. Enter a valid integer account number.\n");
+
+            // Clear the input buffer
+            while (getchar() != '\n');  // Consume characters until newline
+        }
+    }
+
+    while (1) {
+        printf("Enter your password number: ");
+
+        // Try to read an integer as the password
+        if (scanf("%d", &password) == 1) {
+            char c;
+            // Check if the character following the integer is a newline
+            if (scanf("%c", &c) == 1 && c == '\n') {
+                break;  // Exit the loop if a valid integer password is entered
+            } else {
+                // Input is not a valid integer
+                printf("Invalid input. Enter a valid integer password.\n");
+
+                // Clear the input buffer
+                while (getchar() != '\n');  // Consume characters until newline
+            }
+        } else {
+            // Input is not a valid integer
+            printf("Invalid input. Enter a valid integer password.\n");
+
+            // Clear the input buffer
+            while (getchar() != '\n');  // Consume characters until newline
+        }
+    }
 
     // Declare a structure to hold loaded account information
     struct BankAccount loadedAccount;
@@ -55,7 +100,7 @@ void displayAccount() {
             while (fscanf(file2, "%d %f %d", &loadedAccount.accountNumber, &loadedAccount.balance, &loadedAccount.password) == 3){
             if (loadedAccount.accountNumber == accountNumber &&loadedAccount.password==password){
                 printf("Balance: %f\n",loadedAccount.balance);
-                fclose(file2);    // Close the file1 as it's no longer needed for reading
+                fclose(file2);    // Close the file2 as it's no longer needed for reading
                 }
             }
             return;    // Exit the function as the account information has been displayed

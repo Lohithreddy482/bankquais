@@ -2,7 +2,7 @@
 * DEPOSITING THE AMOUNT INTO ACCOUNT
 
 * Description:
-* This program is a simple Bank management system designed to Deposit the Account into Account.
+* This program is a Bank management system designed to Deposit the Account into Account.
 
 * File: deposit.c
 * - It includes necessary function to deposit the amount into account.
@@ -12,7 +12,7 @@
 * - Follow the on-screen prompts to Deposit.
 *
 * Note: This program is for educational purposes and may require additional enhancements
-* for real-world use cases such as error handling, data validation, and persistence.
+* for real-world use cases such as error handling and persistence.
 */
 
 // "main.h" contains the structure for a bank account and declarations for displayAccount, deposit, and withdraw
@@ -21,14 +21,56 @@
 // Function to perform a deposit to the account
 void deposit() {
     int accountNumber,password;
-    float amount;
+    int amount;
+while (1) {
+        printf("Enter your account number: ");
 
-    // GetTing the account information from the user
-    printf("Enter your account number: ");
-    scanf("%d", &accountNumber);
-    printf("Enter your password number: ");
-    scanf("%d", &password);
+        // Try to read an integer as the account number
+        if (scanf("%d", &accountNumber) == 1) {
+            char c;
+            // Check if the character following the integer is a newline
+            if (scanf("%c", &c) == 1 && c == '\n') {
+                break;  // Exit the loop if a valid integer account number is entered
+            } else {
+                // Input is not a valid integer
+                printf("Invalid input. Enter a valid integer account number.\n");
 
+                // Clear the input buffer
+                while (getchar() != '\n');  // Consume characters until newline
+            }
+        } else {
+            // Input is not a valid integer
+            printf("Invalid input. Enter a valid integer account number.\n");
+
+            // Clear the input buffer
+            while (getchar() != '\n');  // Consume characters until newline
+        }
+    }
+
+    while (1) {
+        printf("Enter your password number: ");
+
+        // Try to read an integer as the password
+        if (scanf("%d", &password) == 1) {
+            char c;
+            // Check if the character following the integer is a newline
+            if (scanf("%c", &c) == 1 && c == '\n') {
+                break;  // Exit the loop if a valid integer password is entered
+            } else {
+                // Input is not a valid integer
+                printf("Invalid input. Enter a valid integer password.\n");
+
+                // Clear the input buffer
+                while (getchar() != '\n');  // Consume characters until newline
+            }
+        } else {
+            // Input is not a valid integer
+            printf("Invalid input. Enter a valid integer password.\n");
+
+            // Clear the input buffer
+            while (getchar() != '\n');  // Consume characters until newline
+        }
+    }
     // Declaring a structure to hold loaded account information
     struct BankAccount loadedAccount;
     // Open the file for reading and updating
@@ -42,9 +84,31 @@ void deposit() {
     while (fscanf(file, "%d %f %d", &loadedAccount.accountNumber, &loadedAccount.balance, &loadedAccount.password) == 3){
         if (loadedAccount.accountNumber == accountNumber && loadedAccount.password==password) {
             // Prompt the user to enter the amount to deposit
-            printf("Enter the amount to deposit: ");
-            scanf("%f", &amount);
+            while (1) {
+                printf("Enter the amount to withdraw: ");
 
+                // Try to read an integer as the withdrawal amount
+                if (scanf("%d", &amount) == 1) {
+                    // Check if the amount is a valid integer
+                    char c;
+                    if (scanf("%c", &c) == 1 && c == '\n') {
+                        // Check if the character following the integer is a newline
+                        break;  // Exit the loop if a valid integer amount is entered
+                    } else {
+                        // Input is not a valid integer
+                        printf("Invalid input. Enter a valid integer amount.\n");
+
+                        // Clear the input buffer
+                        while (getchar() != '\n');  // Consume characters until newline
+                    }
+                } else {
+                    // Input is not a valid integer
+                    printf("Invalid input. Enter a valid integer amount.\n");
+
+                    // Clear the input buffer
+                    while (getchar() != '\n');  // Consume characters until newline
+                }
+                  }
             // Perform the deposit and update the balance
             loadedAccount.balance += amount;
 
@@ -58,7 +122,7 @@ void deposit() {
             fclose(file);
 
             // Display a successful deposit message
-            printf("Deposit successful. New balance: $%.2f\n", loadedAccount.balance);
+            printf("Deposit successful. New balance: %.2f\n", loadedAccount.balance);
             return;      // Exit the function after processing the deposit
         }
     }
