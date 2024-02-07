@@ -4,7 +4,7 @@
 * Description:
 * This C program serves as a basic Bank Management System, offering functionalities to display account information,
 * deposit funds, and withdraw funds. It uses a structure called 'BankAccount' to store information about each account,
-* including the account holder's name, account number, balance, and password.
+* including the account number and balance.
 
 * File Structure:
 * - "main.h" includes the structure definition for 'BankAccount' and function declarations for displayAccount, deposit, and withdraw.
