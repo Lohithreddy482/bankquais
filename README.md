@@ -27,5 +27,5 @@
 * - withdraw(): Performs a withdrawal from the account after validating the account number and password.
 
 * Structure:
-* - The 'BankAccount' structure holds information about an account, including name, account number, balance, and password.
+* - The 'BankAccount' structure holds information about an accouct's account number, balance, and password.
 */
