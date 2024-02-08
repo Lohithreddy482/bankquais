@@ -23,8 +23,8 @@
 // Function to perform a withdrawal from the account
 void withdraw() {
 
-    // Get account information from the user
-    int accountNumber,password;
+    // Get account information from the user and using 1 temporary variable to store condition when there is valid amount to withdraw.
+    int accountNumber,password,temp;
     while (1) {
         printf("Enter your account number: ");
 
@@ -96,6 +96,7 @@ void withdraw() {
                     // Check if the amount is a valid integer
                     char c;
                     if (scanf("%c", &c) == 1 && c == '\n') {
+                             temp=1;
                         // Check if the character following the integer is a newline
                         break;  // Exit the loop if a valid integer amount is entered
                     } else {
@@ -114,31 +115,37 @@ void withdraw() {
                 }
                   }
         }
+        if(temp==1){
+            // Perform the withdrawal and update the balance
+            while (amount > loadedAccount.balance) {
+                printf("Insufficient funds for withdrawal. Enter a valid amount: ");
+
+                if (scanf("%d", &amount) != 1) {
+                    // Invalid input, clear buffer
+                    while (getchar() != '\n');
+                }
+            }
 
             // Perform the withdrawal and update the balance
-            if (amount <= loadedAccount.balance) {
-                loadedAccount.balance -= amount;
+            loadedAccount.balance -= amount;
 
-                // Move the file pointer to the beginning of the file
-                fseek(file1, 0, SEEK_SET);
+            // Move the file pointer to the beginning of the file
+            fseek(file1, 0, SEEK_SET);
 
-                // Write the updated balance back to the file
-                fprintf(file1, "%d  %.2f %d\n",loadedAccount.accountNumber, loadedAccount.balance,loadedAccount.password);
+            // Write the updated balance back to the file
+            fprintf(file1, "%d %.2f %d\n", loadedAccount.accountNumber, loadedAccount.balance, loadedAccount.password);
 
-                // Close the file after updating
-                fclose(file1);
+            // Close the file after updating
+            fclose(file1);
 
-                // Display a successful withdrawal message
-                printf("Withdrawal successful. New balance: %.2f\n", loadedAccount.balance);
-            }
-            else {
-                // Display an insufficient funds message if the withdrawal amount is greater than the balance
-                printf("Insufficient funds for withdrawal.\n");
-            }
+            // Display a successful withdrawal message
+            printf("Withdrawal successful. New balance: %.2f\n", loadedAccount.balance);
+
 
             // Exit the function after processing the withdrawal
             return;
 
+    }
     }
 
     // If the loop completes, the account information was not found in the file

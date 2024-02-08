@@ -85,7 +85,7 @@ while (1) {
         if (loadedAccount.accountNumber == accountNumber && loadedAccount.password==password) {
             // Prompt the user to enter the amount to deposit
             while (1) {
-                printf("Enter the amount to withdraw: ");
+                printf("Enter the amount to Deposit: ");
 
                 // Try to read an integer as the withdrawal amount
                 if (scanf("%d", &amount) == 1) {

@@ -25,6 +25,7 @@ int main() {
 
         do{
         // Display menu
+        printf("Welcome to TSL Bank\n");
         printf("1. Display Account Information\n");
         printf("2. Withdraw\n");
         printf("3. Deposit\n");

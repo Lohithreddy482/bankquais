@@ -109,5 +109,6 @@ void displayAccount() {
 
     // If the loop completes, the account information was not found in file1
     printf("Account not found.\n");
-    fclose(file1);  // Close the file1 as it's no longer needed for reading
+    fclose(file1);
+    fclose(file2); // Close the file1 as it's no longer needed for reading
 }
